@@ -19,5 +19,6 @@ urlpatterns = patterns('',
     url(r'^items/$', 'consumer_karma.views.items'),
     url(r'^items/new_item$', 'consumer_karma.views.new_item'),
     url(r'^produce/$', 'consumer_karma.views.produce'),
+    url(r'^thanks/$', 'consumer_karma.views.thanks'),
     # url(r'^admin/', include(admin.site.urls)),
 )

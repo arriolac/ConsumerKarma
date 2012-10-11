@@ -26,6 +26,10 @@ def new_company(request):
     if request.method == 'POST': # if form has been submitted
         form = CompanyForm(request.POST)
         if form.is_valid():
+            newCompany = ParsePy.ParseObject("Company")
+            newCompany.name = form.cleaned_data['name']
+            newCompany.description = form.cleaned_data['description']
+            newCompany.save()
             return HttpResponseRedirect('/thanks/')
     else:
         form = CompanyForm() # if form not submitted
@@ -43,3 +47,6 @@ def produce(request):
     newItem.environmentally_unsustainable=False
     newItem.exploited_labor=False
     newItem.save()
+
+def thanks(request):
+    return HttpResponse('Thanks!')
