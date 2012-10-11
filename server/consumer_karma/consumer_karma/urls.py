@@ -14,6 +14,10 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^$', 'consumer_karma.views.index'),
+    url(r'^companies/$', 'consumer_karma.views.companies'),
+    url(r'^companies/new_company$', 'consumer_karma.views.new_company'),
+    url(r'^items/$', 'consumer_karma.views.items'),
+    url(r'^items/new_item$', 'consumer_karma.views.new_item'),
     url(r'^produce/$', 'consumer_karma.views.produce'),
     # url(r'^admin/', include(admin.site.urls)),
 )
