@@ -29,6 +29,12 @@ APPLICATION_ID = ''
 REST_API_KEY = ''
 
 
+class ParseRelation:
+    def __init__(self, class_name):
+        self._class_name = class_name
+    def className(self):
+        return self._class_name
+
 class ParseBinaryDataWrapper(str):
     pass
 
@@ -140,6 +146,8 @@ class ParseObject(ParseBase):
                 value = self._ISO8601ToDatetime(value['iso'])
             elif value['__type'] == 'Bytes':
                 value = ParseBinaryDataWrapper(base64.b64decode(value['base64']))
+            elif value['__type'] == 'Relation':
+                value = ParseRelation(value['className'])
             else:
                 raise Exception('Invalid __type.')
 
@@ -269,3 +277,4 @@ class ParseQuery(ParseBase):
             return ParseObject(self._class_name, response_dict)
         else:
             return [ParseObject(self._class_name, result) for result in response_dict['results']]
+
