@@ -106,6 +106,8 @@ public class MainActivity extends FragmentActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Not found",
                             Toast.LENGTH_LONG).show();
+                    mTxtEmpty.setText("No Product/s Found."); 
+                    showEmptyText();
                 }
             }
         });
@@ -113,10 +115,10 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void refreshList(List<ParseObject> list) {
-        showList();
-
         mItems = Item.toItemsList(list);
         mAdapter = new ItemsAdapter(this, mItems);
+        mListView.setAdapter(mAdapter);
+        showList();
     }
 
     private void showDisplayProgress() {

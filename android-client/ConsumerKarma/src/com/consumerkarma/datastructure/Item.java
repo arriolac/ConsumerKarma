@@ -30,6 +30,10 @@ public class Item {
         mItem = obj;
     }
     
+    public String getTitle() {
+        return mItem.getString(COL_TITLE);
+    }
+    
     public static List<Item> toItemsList(List<ParseObject> objs) {
         
         List<Item> items = new ArrayList<Item>();
