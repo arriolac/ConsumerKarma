@@ -972,7 +972,6 @@ containing a value of this type.
         public static final int listMode=0x7f040002;
         public static final int list_view=0x7f040035;
         public static final int menu_search=0x7f040039;
-        public static final int menu_settings=0x7f04003b;
         public static final int menu_speech_to_text=0x7f04003a;
         public static final int normal=0x7f040001;
         public static final int root=0x7f040033;
