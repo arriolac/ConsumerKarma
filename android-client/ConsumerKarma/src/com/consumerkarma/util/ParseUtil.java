@@ -1,0 +1,25 @@
+package com.consumerkarma.util;
+
+import android.content.Context;
+
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseQuery;
+
+public class ParseUtil {
+
+    private static final String APPLICATION_ID = "xXnJr64tDsIdqugTpfJxg9nKaUE6oEH6tg3M7j74";
+    private static final String CLIENT_KEY = "XkXKXMOnhnh1QEmSg11XWJUGpnZBjEMY3f7oJFxx";
+    
+    private static final String CLASS_ITEM = "Item";
+    
+    public static void init(Context context) {
+        Parse.initialize(context, APPLICATION_ID, CLIENT_KEY);
+    }
+   
+    public static void queryItem(Context ctx, String queryString, FindCallback callback) {
+        ParseQuery query = new ParseQuery(CLASS_ITEM);
+        query.whereMatches("title", queryString, "i");
+        query.findInBackground(callback);
+    }
+}
