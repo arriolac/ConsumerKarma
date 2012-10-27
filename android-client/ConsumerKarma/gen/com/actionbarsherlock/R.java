@@ -917,9 +917,10 @@ containing a value of this type.
         public static final int abs__textfield_searchview_holo_light=0x7f02006c;
         public static final int abs__textfield_searchview_right_holo_dark=0x7f02006d;
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
-        public static final int ic_action_mic=0x7f02006f;
-        public static final int ic_action_search=0x7f020070;
-        public static final int ic_launcher=0x7f020071;
+        public static final int barcode=0x7f02006f;
+        public static final int ic_action_mic=0x7f020070;
+        public static final int ic_action_search=0x7f020071;
+        public static final int ic_launcher=0x7f020072;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040022;
@@ -962,15 +963,16 @@ containing a value of this type.
         public static final int abs__title=0x7f04001b;
         public static final int abs__titleDivider=0x7f04001c;
         public static final int abs__up=0x7f04000b;
-        public static final int btn_scan=0x7f040034;
+        public static final int btn_scan=0x7f040038;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f040027;
-        public static final int empty_text=0x7f040036;
+        public static final int empty_text=0x7f040035;
         public static final int homeAsUp=0x7f040006;
-        public static final int item_img=0x7f040037;
-        public static final int item_title=0x7f040038;
+        public static final int item_img=0x7f040036;
+        public static final int item_title=0x7f040037;
         public static final int listMode=0x7f040002;
-        public static final int list_view=0x7f040035;
+        public static final int list_view=0x7f040034;
+        public static final int menu_barcode=0x7f04003b;
         public static final int menu_search=0x7f040039;
         public static final int menu_speech_to_text=0x7f04003a;
         public static final int normal=0x7f040001;

@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
     private final static String DEBUG_TAG = MainActivity.class.getName();
 
     private SearchView mSearchView;
-    private Button mBtnScan;
+//    private Button mBtnScan;
     private ListView mListView;
     private TextView mTxtEmpty;
 
@@ -52,14 +52,14 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initViews() {
-        mBtnScan = (Button) findViewById(R.id.btn_scan);
-        mBtnScan.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                getBarcodeScan();
-            }
-        });
+//        mBtnScan = (Button) findViewById(R.id.btn_scan);
+//        mBtnScan.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                getBarcodeScan();
+//            }
+//        });
 
         mListView = (ListView) findViewById(R.id.list_view);
         mTxtEmpty = (TextView) findViewById(R.id.empty_text);
@@ -72,6 +72,9 @@ public class MainActivity extends FragmentActivity {
         switch (item.getItemId()) {
             case R.id.menu_speech_to_text:
                 // KIM: add code here
+                return true;
+            case R.id.menu_barcode:
+                getBarcodeScan();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
