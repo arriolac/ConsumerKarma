@@ -22,8 +22,10 @@ public class Item implements Parcelable {
     public static final String CLASS_NAME = "Item";
     
     public static final String COL_TITLE = "title";
-    public static final String COL_DESCRIPTIOn = "description";
+    public static final String COL_DESCRIPTION = "description";
     public static final String COL_IMAGE = "image";
+    public static final String COL_COMPANY = "company";
+    
     public static final String COL_SCORE_ENV = "score_env_impact";
     public static final String COL_SCORE_ANIMAL_RIGHTS = "score_animal_rights";
     public static final String COL_SCORE_HUMAN_RIGHTS = "score_human_rights";
@@ -47,8 +49,20 @@ public class Item implements Parcelable {
         mItem = obj;
     }
     
+    public String getItemId() {
+        return mItem.getObjectId();
+    }
+    
     public String getTitle() {
         return mItem.getString(COL_TITLE);
+    }
+    
+    public String getCompany() {
+        return mItem.getString(COL_COMPANY);
+    }
+    
+    public String getDescription() {
+        return mItem.getString(COL_DESCRIPTION);
     }
     
     public void getImage(final GetDataCallback callback) {

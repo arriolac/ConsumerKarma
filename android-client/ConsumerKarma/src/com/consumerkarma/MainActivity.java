@@ -174,7 +174,9 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Item item = (Item) view.getTag();
-        
+        Item item = (Item) parent.getItemAtPosition(position);
+        Intent intent = new Intent(this, ItemDetailsActivity.class);
+        intent.putExtra(ItemDetailsActivity.EXTRA_ITEM_ID, item.getItemId());
+        startActivity(intent);
     }
 }

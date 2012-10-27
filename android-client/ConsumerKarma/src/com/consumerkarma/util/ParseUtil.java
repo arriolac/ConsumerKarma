@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.consumerkarma.datastructure.Item;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseQuery;
 
@@ -21,6 +22,11 @@ public class ParseUtil {
         ParseQuery query = new ParseQuery(Item.CLASS_NAME);
         query.whereMatches(Item.COL_TITLE, queryString, "i");
         query.findInBackground(callback);
+    }
+    
+    public static void queryItemById(Context ctx, String id, GetCallback callback) {
+        ParseQuery query = new ParseQuery(Item.CLASS_NAME);
+        query.getInBackground(id, callback);
     }
     
 }
