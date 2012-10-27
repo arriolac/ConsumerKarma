@@ -3,12 +3,17 @@ package com.consumerkarma;
 
 import java.util.List;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -63,6 +68,8 @@ public class MainActivity extends FragmentActivity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
 
         // NOTE: only works on API 11
+        final MenuItem menuSearch = menu.findItem(R.id.menu_search);
+
         mSearchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
         mSearchView.setQueryHint("Search for a Product.");
         mSearchView.setOnQueryTextListener(new OnQueryTextListener() {
@@ -75,7 +82,8 @@ public class MainActivity extends FragmentActivity {
                     public void done(List<ParseObject> arg0, ParseException arg1) {
                         hideDisplayProgress();
                         if (arg0.size() != 0) {
-                            Toast.makeText(MainActivity.this, arg0.get(0).getString("title"), 
+                            //refreshList(arg0);
+                            Toast.makeText(MainActivity.this, arg0.get(0).getString("title"),
                                     Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(MainActivity.this, "Not found",
@@ -83,10 +91,8 @@ public class MainActivity extends FragmentActivity {
                         }
                     }
                 });
-                
-                mSearchView.setIconified(true);
                 showDisplayProgress();
-                
+
                 return true;
             }
 
@@ -97,15 +103,28 @@ public class MainActivity extends FragmentActivity {
         });
         return true;
     }
-    
+
     private void showDisplayProgress() {
-        // TODO
+        InputMethodManager imm = (InputMethodManager) getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mSearchView.getApplicationWindowToken(), 0);
+
+        final ProgressDialogFragment progressFragment = new ProgressDialogFragment();
+        progressFragment.setMessage(getText(R.string.please_wait).toString());
+        progressFragment.setCancelable(true);
+        progressFragment.show(getFragmentManager(), "wait_dialog");
     }
 
     private void hideDisplayProgress() {
-        // TODO
+        InputMethodManager imm = (InputMethodManager) getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mSearchView.getApplicationWindowToken(), 0);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Fragment progressDialog = getFragmentManager().findFragmentByTag("wait_dialog");
+        transaction.remove(progressDialog).commit();
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult =

@@ -1063,6 +1063,7 @@ containing a value of this type.
         public static final int app_name=0x7f09000f;
         public static final int hello_world=0x7f090010;
         public static final int menu_settings=0x7f090011;
+        public static final int please_wait=0x7f090016;
         public static final int product_list=0x7f090014;
         public static final int scan=0x7f090013;
         public static final int search_or_scan=0x7f090015;
