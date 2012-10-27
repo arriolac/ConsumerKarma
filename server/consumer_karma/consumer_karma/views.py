@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 
 import ParsePy
@@ -11,10 +11,11 @@ ParsePy.REST_API_KEY = "dAc70AZmfJNuvIDExvBaZ5QuI6XOEk3IkpUxYsja"
 
 # API
 def index(request):
-    return HttpResponse('ConsumerKarma Hello World!')
+    return render_to_response('index.html')
 
 def companies(request):
-    return HttpResponse('Companies!')
+    companies = ParsePy.ParseQuery("Company").fetch()
+    return render_to_response('companies.html', {'companies': companies})
 
 def items(request):
     return HttpResponse('Items!')
@@ -32,6 +33,7 @@ def new_company(request):
             newCompany.save()
             return HttpResponseRedirect('/thanks/')
     else:
+        parents = ParsePy.ParseQuery("Company").fetch()
         form = CompanyForm() # if form not submitted
     return render(request, 'new_company.html', {
         'form': form,
