@@ -21,6 +21,7 @@ import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.consumerkarma.datastructure.Item;
 import com.consumerkarma.util.ParseUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -36,6 +37,9 @@ public class MainActivity extends FragmentActivity {
     private Button mBtnScan;
     private ListView mListView;
     private TextView mTxtEmpty;
+
+    private List<Item> mItems;
+    private ItemsAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,22 +80,7 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                ParseUtil.queryItem(MainActivity.this, query, new FindCallback() {
-
-                    @Override
-                    public void done(List<ParseObject> arg0, ParseException arg1) {
-                        hideDisplayProgress();
-                        if (arg0.size() != 0) {
-                            //refreshList(arg0);
-                            Toast.makeText(MainActivity.this, arg0.get(0).getString("title"),
-                                    Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Not found",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-                showDisplayProgress();
+                search(query);
 
                 return true;
             }
@@ -102,6 +91,32 @@ public class MainActivity extends FragmentActivity {
             }
         });
         return true;
+    }
+
+    private void search(String query) {
+        ParseUtil.queryItem(MainActivity.this, query, new FindCallback() {
+
+            @Override
+            public void done(List<ParseObject> arg0, ParseException arg1) {
+                hideDisplayProgress();
+                if (arg0.size() != 0) {
+                    refreshList(arg0);
+                    Toast.makeText(MainActivity.this, arg0.get(0).getString("title"),
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Not found",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        showDisplayProgress();
+    }
+
+    private void refreshList(List<ParseObject> list) {
+        showList();
+
+        mItems = Item.toItemsList(list);
+        mAdapter = new ItemsAdapter(this, mItems);
     }
 
     private void showDisplayProgress() {
@@ -116,10 +131,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void hideDisplayProgress() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(
-                Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mSearchView.getApplicationWindowToken(), 0);
-
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         Fragment progressDialog = getFragmentManager().findFragmentByTag("wait_dialog");
         transaction.remove(progressDialog).commit();

@@ -966,10 +966,12 @@ containing a value of this type.
         public static final int edit_query=0x7f040027;
         public static final int empty_text=0x7f040036;
         public static final int homeAsUp=0x7f040006;
+        public static final int item_img=0x7f040037;
+        public static final int item_title=0x7f040038;
         public static final int listMode=0x7f040002;
         public static final int list_view=0x7f040035;
-        public static final int menu_search=0x7f040037;
-        public static final int menu_settings=0x7f040038;
+        public static final int menu_search=0x7f040039;
+        public static final int menu_settings=0x7f04003a;
         public static final int normal=0x7f040001;
         public static final int root=0x7f040033;
         public static final int showCustom=0x7f040008;
@@ -1007,9 +1009,10 @@ containing a value of this type.
         public static final int abs__search_view=0x7f030015;
         public static final int abs__simple_dropdown_hint=0x7f030016;
         public static final int activity_main=0x7f030017;
-        public static final int scan_fragment=0x7f030018;
-        public static final int sherlock_spinner_dropdown_item=0x7f030019;
-        public static final int sherlock_spinner_item=0x7f03001a;
+        public static final int item_cell=0x7f030018;
+        public static final int scan_fragment=0x7f030019;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001a;
+        public static final int sherlock_spinner_item=0x7f03001b;
     }
     public static final class menu {
         public static final int activity_main=0x7f0b0000;
