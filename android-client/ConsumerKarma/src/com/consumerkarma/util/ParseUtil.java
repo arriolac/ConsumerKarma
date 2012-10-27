@@ -22,4 +22,5 @@ public class ParseUtil {
         query.whereMatches(Item.COL_TITLE, queryString, "i");
         query.findInBackground(callback);
     }
+    
 }

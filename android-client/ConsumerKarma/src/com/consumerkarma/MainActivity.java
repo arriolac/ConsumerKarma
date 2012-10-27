@@ -12,9 +12,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
@@ -29,12 +29,11 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnItemClickListener {
 
     private final static String DEBUG_TAG = MainActivity.class.getName();
 
     private SearchView mSearchView;
-//    private Button mBtnScan;
     private ListView mListView;
     private TextView mTxtEmpty;
 
@@ -52,16 +51,9 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initViews() {
-//        mBtnScan = (Button) findViewById(R.id.btn_scan);
-//        mBtnScan.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                getBarcodeScan();
-//            }
-//        });
-
         mListView = (ListView) findViewById(R.id.list_view);
+        mListView.setOnItemClickListener(this);
+        
         mTxtEmpty = (TextView) findViewById(R.id.empty_text);
 
         showEmptyText();
@@ -95,7 +87,6 @@ public class MainActivity extends FragmentActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 search(query);
-
                 return true;
             }
 
@@ -179,5 +170,11 @@ public class MainActivity extends FragmentActivity {
     private void showList() {
         mTxtEmpty.setVisibility(View.GONE);
         mListView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Item item = (Item) view.getTag();
+        
     }
 }
