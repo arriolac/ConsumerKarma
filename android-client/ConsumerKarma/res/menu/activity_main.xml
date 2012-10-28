@@ -8,12 +8,12 @@
         android:title="Search"/>
     <item
         android:id="@+id/menu_speech_to_text"
-        android:showAsAction="always"
+        android:showAsAction="ifRoom"
         android:icon="@drawable/ic_action_mic"
         android:title="Speech"/>
     <item
         android:id="@+id/menu_barcode"
-        android:showAsAction="always"
+        android:showAsAction="ifRoom"
         android:icon="@drawable/barcode"
         android:title="Scan"/>
 

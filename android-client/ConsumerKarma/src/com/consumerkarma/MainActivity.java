@@ -106,11 +106,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
                 hideDisplayProgress();
                 if (arg0.size() != 0) {
                     refreshList(arg0);
-                    Toast.makeText(MainActivity.this, arg0.get(0).getString("title"),
-                            Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Not found",
-                            Toast.LENGTH_LONG).show();
                     mTxtEmpty.setText("No Product/s Found."); 
                     showEmptyText();
                 }
@@ -148,6 +144,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         IntentResult scanResult =
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null && resultCode == RESULT_OK) {
+            // TODO
             Toast.makeText(this, "Contents: " + scanResult.getContents() +
                     "FormatName: " + scanResult.getFormatName(), Toast.LENGTH_LONG).show();
         }

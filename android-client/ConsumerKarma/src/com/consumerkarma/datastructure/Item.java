@@ -27,6 +27,7 @@ public class Item implements Parcelable {
     public static final String COL_COMPANY = "company";
     
     public static final String COL_SCORE_ENV = "score_env_impact";
+    public static final String COL_SCORE_POL = "score_politics";
     public static final String COL_SCORE_ANIMAL_RIGHTS = "score_animal_rights";
     public static final String COL_SCORE_HUMAN_RIGHTS = "score_human_rights";
     public static final String COL_SCORE_OTHER = "score_other";
@@ -63,6 +64,30 @@ public class Item implements Parcelable {
     
     public String getDescription() {
         return mItem.getString(COL_DESCRIPTION);
+    }
+    
+    public int getHrCount() {
+        return mItem.getInt(COL_SCORE_HUMAN_RIGHTS);
+    }
+    
+    public int getPolCount() {
+        return mItem.getInt(COL_SCORE_POL);
+    }
+    
+    public int getExecCount() {
+        return mItem.getInt(COL_SCORE_EXECP_OPP);
+    }
+    
+    public int getAnimalCount() {
+        return mItem.getInt(COL_SCORE_ANIMAL_RIGHTS);
+    }
+    
+    public int getEnvCount() {
+        return mItem.getInt(COL_SCORE_ENV);
+    }
+    
+    public int getOtherCount() {
+        return mItem.getInt(COL_SCORE_OTHER);
     }
     
     public void getImage(final GetDataCallback callback) {
