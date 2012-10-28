@@ -32,8 +32,11 @@ import com.consumerkarma.R;
  *          android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 **/
 public class SimpleSpeechActivityDemo extends Activity {
+    
     private TextView resultView = null;
     private String oauthToken = null;
+    
+    public static final String EXTRA_OAUTH = "extra_oauth";
     
     /** 
      * Called when the activity is first created.  This is where we'll hook up 
@@ -45,6 +48,7 @@ public class SimpleSpeechActivityDemo extends Activity {
         
         // First, we specify which layout resource we'll be using.
         setContentView(R.layout.speech);        
+        oauthToken = getIntent().getStringExtra(EXTRA_OAUTH);
         startSpeechActivity();
         
         // This will show the recognized text.

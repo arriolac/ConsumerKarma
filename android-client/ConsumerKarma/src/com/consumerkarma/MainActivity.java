@@ -22,7 +22,6 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.consumerkarma.TTS.SimpleSpeechActivityDemo;
 import com.consumerkarma.TTS.SpeechAuth;
@@ -70,8 +69,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
      * Handle the result of an asynchronous OAuth check.
      **/
     private class OAuthResponseListener implements SpeechAuth.Client {
-        public void
-                handleResponse(String token, Exception error)
+        public void handleResponse(String token, Exception error)
         {
             if (token != null) {
                 oauthToken = token;
@@ -114,6 +112,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         mListView.setOnItemClickListener(this);
 
         mTxtEmpty = (TextView) findViewById(R.id.empty_text);
+        showEmptyText();
     }
 
     private final int TTS_TEXT_RESULT = 125;
@@ -123,6 +122,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         switch (item.getItemId()) {
             case R.id.menu_speech_to_text:
                 Intent intent = new Intent(this, SimpleSpeechActivityDemo.class);
+                intent.putExtra(SimpleSpeechActivityDemo.EXTRA_OAUTH, oauthToken);
                 startActivityForResult(intent, TTS_TEXT_RESULT);
                 return true;
             case R.id.menu_barcode:
@@ -162,7 +162,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         return true;
     }
 
-    private void search(String query) {
+    private void search(final String query) {
         ParseUtil.queryItem(MainActivity.this, query, new FindCallback() {
 
             @Override
@@ -176,7 +176,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
                 }
             }
         });
-        showDisplayProgress();
+        showDisplayProgress(query);
     }
 
     private void refreshList(List<ParseObject> list) {
@@ -186,13 +186,13 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         showList();
     }
 
-    private void showDisplayProgress() {
+    private void showDisplayProgress(String query) {
         InputMethodManager imm = (InputMethodManager) getSystemService(
                 Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(mSearchView.getApplicationWindowToken(), 0);
 
         final ProgressDialogFragment progressFragment = new ProgressDialogFragment();
-        progressFragment.setMessage(getText(R.string.please_wait).toString());
+        progressFragment.setMessage("Searching for \"" + query + "\"...");
         progressFragment.setCancelable(true);
         progressFragment.show(getFragmentManager(), "wait_dialog");
     }
@@ -213,8 +213,9 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 
             // BIG HACK
             search("oreo");
-//            Toast.makeText(this, "Contents: " + scanResult.getContents() +
-//                    "FormatName: " + scanResult.getFormatName(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, "Contents: " + scanResult.getContents() +
+            // "FormatName: " + scanResult.getFormatName(),
+            // Toast.LENGTH_LONG).show();
         }
 
         if (requestCode == TTS_TEXT_RESULT && resultCode == RESULT_OK)

@@ -26,7 +26,7 @@
         </activity>
         <activity android:name="com.att.android.speech.ATTSpeechActivity"
            android:theme="@android:style/Theme.Translucent.NoTitleBar" />        
-        <activity android:name="com.consumerkarma.TTS.SimpleSpeechActivityDemo" />
+        <activity android:name=".TTS.SimpleSpeechActivityDemo" />
         <activity 
             android:name="com.consumerkarma.ItemDetailsActivity"></activity>
     </application>
