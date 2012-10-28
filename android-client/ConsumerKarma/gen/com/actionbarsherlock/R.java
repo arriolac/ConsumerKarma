@@ -986,20 +986,22 @@ containing a value of this type.
         public static final int item_title=0x7f040037;
         public static final int listMode=0x7f040002;
         public static final int list_view=0x7f040034;
-        public static final int menu_barcode=0x7f040049;
-        public static final int menu_search=0x7f040047;
-        public static final int menu_speech_to_text=0x7f040048;
+        public static final int menu_barcode=0x7f04004b;
+        public static final int menu_search=0x7f040049;
+        public static final int menu_speech_to_text=0x7f04004a;
         public static final int normal=0x7f040001;
         public static final int other_bg=0x7f040044;
         public static final int other_count=0x7f040045;
         public static final int pol_bg=0x7f04003c;
         public static final int pol_count=0x7f04003d;
+        public static final int result=0x7f040048;
         public static final int root=0x7f040033;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
         public static final int useLogo=0x7f040004;
+        public static final int webview=0x7f040047;
         public static final int wrap_content=0x7f040000;
     }
     public static final class integer {
@@ -1035,6 +1037,7 @@ containing a value of this type.
         public static final int scan_fragment=0x7f03001a;
         public static final int sherlock_spinner_dropdown_item=0x7f03001b;
         public static final int sherlock_spinner_item=0x7f03001c;
+        public static final int speech=0x7f03001d;
     }
     public static final class menu {
         public static final int activity_main=0x7f0b0000;
@@ -1089,6 +1092,7 @@ containing a value of this type.
         public static final int menu_settings=0x7f090010;
         public static final int please_wait=0x7f090015;
         public static final int product_list=0x7f090013;
+        public static final int result=0x7f090016;
         public static final int scan=0x7f090012;
         public static final int search_or_scan=0x7f090014;
         public static final int title_activity_main=0x7f090011;

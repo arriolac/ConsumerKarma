@@ -8,5 +8,6 @@
     <string name="product_list">Product List</string>
     <string name="search_or_scan">Search or Scan a Product</string>
     <string name="please_wait">"Please wait…"</string>
-
+    <string name="result"> </string>
+    
 </resources>
