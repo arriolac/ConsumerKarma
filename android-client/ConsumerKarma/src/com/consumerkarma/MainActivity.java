@@ -54,23 +54,24 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
     private ItemsAdapter mAdapter;
     private String oauthToken = null;
     private MenuItem tts;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         validateOAuth();
         ParseUtil.init(this);
 
         initViews();
     }
+
     /**
      * Handle the result of an asynchronous OAuth check.
-    **/
+     **/
     private class OAuthResponseListener implements SpeechAuth.Client {
-        public void 
-        handleResponse(String token, Exception error)
+        public void
+                handleResponse(String token, Exception error)
         {
             if (token != null) {
                 oauthToken = token;
@@ -78,33 +79,35 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
                 tts.setEnabled(true);
             }
             else {
-                Log.v("SimpleSpeech", "OAuth error: "+error);
+                Log.v("SimpleSpeech", "OAuth error: " + error);
                 // There was either a network error or authentication error.
                 // Show alert for the latter.
-                alert("Speech Unavailable", 
-                    "This app was rejected by the speech service.  Contact the developer for an update.");
+                alert("Speech Unavailable",
+                        "This app was rejected by the speech service.  Contact the developer for an update.");
             }
         }
     }
+
     private void alert(String header, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
-            .setTitle(header)
-            .setCancelable(true)
-            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
+                .setTitle(header)
+                .setCancelable(true)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     private void validateOAuth() {
-        SpeechAuth auth = SpeechAuth.forService(SpeechConfig.oauthUrl(), 
+        SpeechAuth auth = SpeechAuth.forService(SpeechConfig.oauthUrl(),
                 SpeechConfig.oauthKey(), SpeechConfig.oauthSecret());
-         auth.fetchTo(new OAuthResponseListener());
+        auth.fetchTo(new OAuthResponseListener());
     }
-    
 
     private void initViews() {
         mListView = (ListView) findViewById(R.id.list_view);
@@ -114,7 +117,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
     }
 
     private final int TTS_TEXT_RESULT = 125;
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -137,7 +140,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         tts = menu.findItem(R.id.menu_speech_to_text);
         tts.setVisible(false);
         tts.setEnabled(false);
-        
+
         // NOTE: only works on API 11
         final MenuItem menuSearch = menu.findItem(R.id.menu_search);
 
@@ -208,16 +211,15 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null && resultCode == RESULT_OK) {
 
+            // BIG HACK
             search("oreo");
-            // if (OREO_UPC.equals(scanResult.getContents())) {
-            // search("oreo");
-            // } else if (false) {
-            //
-            // }
+//            Toast.makeText(this, "Contents: " + scanResult.getContents() +
+//                    "FormatName: " + scanResult.getFormatName(), Toast.LENGTH_LONG).show();
+        }
 
-            Log.e("error", scanResult.getContents());
-            Toast.makeText(this, "Contents: " + scanResult.getContents() +
-                    "FormatName: " + scanResult.getFormatName(), Toast.LENGTH_LONG).show();
+        if (requestCode == TTS_TEXT_RESULT && resultCode == RESULT_OK)
+        {
+            search(intent.getStringExtra("WORD"));
         }
     }
 
