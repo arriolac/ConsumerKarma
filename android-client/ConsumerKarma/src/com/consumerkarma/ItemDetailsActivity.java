@@ -82,11 +82,11 @@ public class ItemDetailsActivity extends FragmentActivity {
         TextView otherCount = (TextView) findViewById(R.id.other_count);
         
         int ihrCount = item.getHrCount();
-        int ipolCount = item.getHrCount();
-        int iexecCount = item.getHrCount();
-        int ianimalCount = item.getHrCount();
-        int ienvCount = item.getHrCount();
-        int iotherCount = item.getHrCount();
+        int ipolCount = item.getPolCount();
+        int iexecCount = item.getExecCount();
+        int ianimalCount = item.getAnimalCount();
+        int ienvCount = item.getEnvCount();
+        int iotherCount = item.getOtherCount();
         
         hrCount.setText("" + item.getHrCount());
         polCount.setText("" + item.getPolCount());
