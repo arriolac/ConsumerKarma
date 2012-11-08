@@ -32,7 +32,7 @@ body {
     font-smoothing: antialiased;
 }
 
-#todoapp {
+#consumer-karma-app {
     background: #fff;
     background: rgba(255, 255, 255, 0.9);
     margin: 130px 0 40px 0;
@@ -42,7 +42,7 @@ body {
     0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
 
-#todoapp:before {
+#consumer-karma-app:before {
     content: '';
     width: 2px;
     position: absolute;
@@ -52,16 +52,16 @@ body {
     height: 100%;
 }
 
-#todoapp input::-webkit-input-placeholder {
+#consumer-karma-app input::-webkit-input-placeholder {
     font-style: italic;
 }
 
-#todoapp input:-moz-placeholder {
+#consumer-karma-app input:-moz-placeholder {
     font-style: italic;
     color: #a9a9a9;
 }
 
-#todoapp h1 {
+#consumer-karma-app h1 {
     position: absolute;
     top: -120px;
     width: 100%;
@@ -402,18 +402,18 @@ label[for='toggle-all'] {
     }
 }
 
-#todoapp .content .login {
+#consumer-karma-app .content .login {
     width: 350px;
     margin: 45px auto 25px auto;
 }
 
-#todoapp .content .login h2 {
+#consumer-karma-app .content .login h2 {
     font-weight: normal;
     font-size: 25px;
     margin-bottom: 20px;
 }
 
-#todoapp .content .login input {
+#consumer-karma-app .content .login input {
     display: block;
     margin-bottom: 10px;
     font-size: 20px;
@@ -421,11 +421,11 @@ label[for='toggle-all'] {
     width: 340px;;
 }
 
-#todoapp .content .login .signup-form {
+#consumer-karma-app .content .login .signup-form {
     margin-top: 25px;
 }
 
-#todoapp .content .login button {
+#consumer-karma-app .content .login button {
     padding: 5px 10px;
     background: #eee;
     font-size: 20px;
@@ -435,14 +435,14 @@ label[for='toggle-all'] {
     font-family: "Helvetica Neue";
 }
 
-#todoapp .content .login .error {
+#consumer-karma-app .content .login .error {
     border: 1px solid red;
     background: #FDEFF0;
     padding: 5px 15px;
     margin-bottom: 15px;
 }
 
-#todoapp .content #user-info {
+#consumer-karma-app .content #user-info {
     padding: 5px 10px;
     border-top: 1px solid #ededed;
     margin-bottom: 0px;
@@ -450,7 +450,7 @@ label[for='toggle-all'] {
 }
 
 
-#todoapp .content .mark-all-done {
+#consumer-karma-app .content .mark-all-done {
     margin-left: 8px;
 }
 
