@@ -104,7 +104,7 @@ $(function() {
         },
 
         render: function() {
-            //this.delegateEvents();
+            this.delegateEvents();
         },
 
         // logs out the user and shows the login view
@@ -125,11 +125,11 @@ $(function() {
             query.matches("title", this.input.val(), "i");
             query.find({
                 success: function(result) {
-                    this.$("#search-results-list").html("");
+                    $("#search-results-list").html("");
                     var singleItem;
                     for (var i = 0; i < result.length; i++) {
                         singleItem = result[i];
-                        this.$("#search-results-list").append(singleItem.get("title") + "</br>");
+                        $("#search-results-list").append(singleItem.get("title") + "</br>");
                     }
                 },
                 error: function(error) {

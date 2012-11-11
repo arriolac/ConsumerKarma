@@ -44,7 +44,7 @@
     </script>
 
     <!-- Search for Product Template -->
-    <script type="text/template" id="search-product-template">
+    <script type="text/template" class="search-product-template">
       <div id="user-info">
         Signed in as <%= Parse.User.current().get("username") %> (<a href="#" class="log-out">Log out</a>)
       </div>
@@ -59,6 +59,7 @@
           <ul id="search-results-list">
             <img src='images/spinner.gif' class='spinner' />
           </ul>
+          <a href="add-new-item.html">Add New Item</a>
         </div>
       </div>
     </script>

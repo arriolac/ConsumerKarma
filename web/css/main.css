@@ -442,13 +442,12 @@ label[for='toggle-all'] {
     margin-bottom: 15px;
 }
 
-#consumer-karma-app .content #user-info {
+#consumer-karma-app .content .user-info {
     padding: 5px 10px;
     border-top: 1px solid #ededed;
     margin-bottom: 0px;
     text-align: right;
 }
-
 
 #consumer-karma-app .content .mark-all-done {
     margin-left: 8px;

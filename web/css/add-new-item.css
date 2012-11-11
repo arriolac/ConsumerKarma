@@ -1,0 +1,80 @@
+
+#main {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 130px 0 40px 0;
+    border: 1px solid #ccc;
+    position: relative;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
+    0 25px 50px 0 rgba(0, 0, 0, 0.15);
+}
+
+#main:before {
+    content: '';
+    width: 2px;
+    position: absolute;
+    top: 45px;
+    top: 0px;
+    left: 40px;
+    height: 100%;
+}
+
+#main input::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+#main input:-moz-placeholder {
+    font-style: italic;
+    color: #a9a9a9;
+}
+
+#main h1 {
+    position: absolute;
+    top: -120px;
+    width: 100%;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: #888;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+}
+
+#main .content .user-info {
+    padding: 5px 10px;
+    border-top: 1px solid #ededed;
+    margin-bottom: 0px;
+    text-align: right;
+}
+
+#main .content .add-new-item {
+    width: 350px;
+    margin: 45px auto 25px auto;
+}
+
+#main .content .add-new-item h2 {
+    font-weight: normal;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#main .content .add-new-item input {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+    width: 340px;;
+}
+
+#main .content .add-new-item button {
+    padding: 5px 10px;
+    background: #eee;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    font-family: "Helvetica Neue";
+}
