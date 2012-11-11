@@ -95,14 +95,16 @@ $(function() {
         initialize: function() {
             _.bindAll(this, 'render', 'logOut', 'searchItem');
 
-            // Main todo management template
+            // Set up views
             this.$el.html(_.template($("#search-product-template").html()));
 
             this.input = this.$("#search-product");
+
+            //this.searchResults = new SearchResultsList();
         },
 
         render: function() {
-            this.delegateEvents();
+            //this.delegateEvents();
         },
 
         // logs out the user and shows the login view
@@ -123,7 +125,12 @@ $(function() {
             query.matches("title", this.input.val(), "i");
             query.find({
                 success: function(result) {
-                    console.log("Result length: " + result.length);
+                    this.$("#search-results-list").html("");
+                    var singleItem;
+                    for (var i = 0; i < result.length; i++) {
+                        singleItem = result[i];
+                        this.$("#search-results-list").append(singleItem.get("title") + "</br>");
+                    }
                 },
                 error: function(error) {
                     console.log("Error: " + error);
