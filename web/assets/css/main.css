@@ -463,3 +463,32 @@ label[for='toggle-all'] {
     color: #888;
 }
 
+/* Styling for Add New Item */ 
+#consumer-karma-app .content .add-new-item {
+    width: 350px;
+    margin: 45px auto 25px auto;
+}
+
+#consumer-karma-app .content .add-new-item h2 {
+    font-weight: normal;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#consumer-karma-app .content .add-new-item input {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+    width: 340px;;
+}
+
+#consumer-karma-app .content .add-new-item button {
+    padding: 5px 10px;
+    background: #eee;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    font-family: "Helvetica Neue";
+}

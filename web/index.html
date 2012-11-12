@@ -45,7 +45,7 @@
 
     <!-- Search for Product Template -->
     <script type="text/template" id="search-product-template">
-      <div id="user-info">
+      <div class="user-info">
         Signed in as <%= Parse.User.current().get("username") %> (<a href="#" class="log-out">Log out</a>)
       </div>
 
@@ -57,48 +57,28 @@
 
         <div id="main">
           <ul id="search-results-list">
-            <img src='assets/images/spinner.gif' class='spinner' />
+            <img src='assets/images/spinner.gif' class='spinner' style="display:none"/>
           </ul>
-          <a href="add-new-item.html">Add New Item</a>
+          <a href="#add-new-item">Add New Item</a>
         </div>
       </div>
     </script>
 
-    <!-- START: Todo example -->
-    <script type="text/template" id="manage-todos-template">
-      <div id="user-info">
-        Signed in as <%= Parse.User.current().get("username") %> (<a href="#" class="log-out">Log out</a>)
-      </div>
-
+    <!-- Add New Item Template -->
+    <script type="text/template" id="add-new-item-template">
       <div class="section">
-
-        <header id="header">
-          <input id="new-todo" placeholder="Search product name" type="text" />
-        </header>
-
-        <div id="main">
-          <ul id="todo-list">
-            <img src='assets/images/spinner.gif' class='spinner' />
-          </ul>
+        <header id="header"></header>
+        <div class="add-new-item">
+          <form class="add-new-item-form">
+            <h2>Add New Item</h2>
+            <input type="text" id="item-title" placeholder="Product Name" />
+            <input type="text" id="company-name" placeholder="Company" />
+            <input type="text" id="item-description" placeholder="Product Description" />
+            <button>Add</button>
+          </form>
         </div>
-
-        <div id="todo-stats"></div>
       </div>
     </script>
-
-    <script type="text/template" id="item-template">
-      <li class="<%= done ? 'completed' : '' %>">
-      <div class="view">
-        <label class="todo-content"><%= content %></label>
-      </div>
-      <input class="edit" value="<%= content %>">
-      </li>
-    </script>
-
-    <script type="text/template" id="stats-template">
-    </script>
-    <!-- END: Todo example -->
-
   </body>
 
 </html>

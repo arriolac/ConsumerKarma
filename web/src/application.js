@@ -13,7 +13,30 @@ $(function() {
     // Views
     //-----------
 
-    /////////////////////////////// Log-in View ///////////////////////////////////
+    // Add New Item View
+    var AddNewItemView = Parse.View.extend({
+
+        events: {
+        },
+
+        el: ".content",
+
+        initialize: function() {
+            _.bindAll(this, 'render', 'addItem');
+
+            this.render();
+        },
+
+        render: function() {
+            this.$el.html(_.template($("#add-new-item-template").html()));
+        },
+
+        addItem: function() {
+            // TODO
+        }
+    });
+
+    // Log-in View 
     var LogInView = Parse.View.extend({
         events: {
             "submit form.login-form": "logIn",
@@ -79,7 +102,7 @@ $(function() {
         }
     });
     
-    ///////////////// Search for Product View /////////////////////////////////
+    // Search for Product View
     var SearchForProductView = Parse.View.extend({
 
         // Delegate event for searching
@@ -139,6 +162,8 @@ $(function() {
         },
     });
 
+
+
     // The main view for the app
     var AppView = Parse.View.extend({
         // Instead of generating a new element, bind to the existing skeleton of
@@ -158,6 +183,23 @@ $(function() {
         }
     });
 
+    var AppRouter = Parse.Router.extend({
+        routes: {
+            "" : "search",                  // index
+            "add-new-item": "addNewItem"    // #add-new-item
+        },
+
+        search: function() {
+            new SearchForProductView();
+        },
+
+        addNewItem: function() {
+            new AddNewItemView();
+        }
+    });
+
     new AppView;
-    //Parse.History.start();
+    new AppRouter;
+
+    Parse.history.start();
 });
