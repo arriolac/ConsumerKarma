@@ -122,8 +122,6 @@ $(function() {
             this.$el.html(_.template($("#search-product-template").html()));
 
             this.input = this.$("#search-product");
-
-            //this.searchResults = new SearchResultsList();
         },
 
         render: function() {
@@ -143,22 +141,23 @@ $(function() {
             // Only proceed on ENTER
             if (e.keyCode != 13) return;
 
-            var Item = Parse.Object.extend("Item");
-            var query = new Parse.Query(Item);
-            query.matches("title", this.input.val(), "i");
-            query.find({
-                success: function(result) {
-                    $("#search-results-list").html("");
-                    var singleItem;
-                    for (var i = 0; i < result.length; i++) {
-                        singleItem = result[i];
-                        $("#search-results-list").append(singleItem.get("title") + "</br>");
-                    }
-                },
-                error: function(error) {
-                    console.log("Error: " + error);
-                }
-            });
+            router.navigate("search/" + this.input.val(), {trigger: true});
+           // var Item = Parse.Object.extend("Item");
+           // var query = new Parse.Query(Item);
+           // query.matches("title", this.input.val(), "i");
+           // query.find({
+           //     success: function(result) {
+           //         $("#search-results-list").html("");
+           //         var singleItem;
+           //         for (var i = 0; i < result.length; i++) {
+           //             singleItem = result[i];
+           //             $("#search-results-list").append(singleItem.get("title") + "</br>");
+           //         }
+           //     },
+           //     error: function(error) {
+           //         console.log("Error: " + error);
+           //     }
+           // });
         },
     });
 
@@ -185,12 +184,18 @@ $(function() {
 
     var AppRouter = Parse.Router.extend({
         routes: {
-            "" : "search",                  // index
+            "" : "main",                    // index
+            "search/:query": "search",             // search
             "add-new-item": "addNewItem"    // #add-new-item
         },
 
-        search: function() {
+        main: function() {
             new SearchForProductView();
+        },
+
+        search: function(query) {
+            // TODO: do parse query
+            alert("Query is: " + query);
         },
 
         addNewItem: function() {
@@ -198,8 +203,8 @@ $(function() {
         }
     });
 
-    new AppView;
-    new AppRouter;
+    var app = new AppView;
+    var router = new AppRouter;
 
     Parse.history.start();
 });
