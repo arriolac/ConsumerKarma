@@ -5,14 +5,14 @@
     <title>Consumer Karma</title>
     <link href="css/main.css" media="all" rel="stylesheet" type="text/css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="js/underscore-1.1.6.js"></script>
+    <script src="js/libs/underscore-1.1.6.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.0.18.min.js"></script>
-    <script src="js/karma.js"></script>
+    <script src="js/application.js"></script>
   </head>
 
   <body>
 
-    <div id="todoapp">
+    <div id="consumer-karma-app">
       <div class="title">
         <h1>Consumer Karma</h1>
       </div>
@@ -21,6 +21,7 @@
       </div>
     </div>
 
+    <!-- Log-in Template -->
     <script type="text/template" id="login-template">
       <header id="header"></header>
       <div class="login">
@@ -42,42 +43,42 @@
       </div>
     </script>
 
-    <script type="text/template" id="manage-todos-template">
-      <div id="user-info">
+    <!-- Search for Product Template -->
+    <script type="text/template" id="search-product-template">
+      <div class="user-info">
         Signed in as <%= Parse.User.current().get("username") %> (<a href="#" class="log-out">Log out</a>)
       </div>
 
       <div class="section">
 
         <header id="header">
-          <input id="new-todo" placeholder="Search product name" type="text" />
+          <input id="search-product" placeholder="Search item name" type="text" />
         </header>
 
         <div id="main">
-          
-          
-          <ul id="todo-list">
-            <img src='images/spinner.gif' class='spinner' />
+          <ul id="search-results-list">
+            <img src='assets/images/spinner.gif' class='spinner' style="display:none"/>
           </ul>
+          <a href="#add-new-item">Add New Item</a>
         </div>
-
-        <div id="todo-stats"></div>
       </div>
     </script>
 
-    <script type="text/template" id="item-template">
-      <li class="<%= done ? 'completed' : '' %>">
-	<div class="view">
-	  <label class="todo-content"><%= content %></label>
-	</div>
-	<input class="edit" value="<%= content %>">
-      </li>
+    <!-- Add New Item Template -->
+    <script type="text/template" id="add-new-item-template">
+      <div class="section">
+        <header id="header"></header>
+        <div class="add-new-item">
+          <form class="add-new-item-form">
+            <h2>Add New Item</h2>
+            <input type="text" id="item-title" placeholder="Product Name" />
+            <input type="text" id="company-name" placeholder="Company" />
+            <input type="text" id="item-description" placeholder="Product Description" />
+            <button>Add</button>
+          </form>
+        </div>
+      </div>
     </script>
-
-    <script type="text/template" id="stats-template">
-
-    </script>
-
   </body>
 
 </html>
