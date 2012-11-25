@@ -5,7 +5,9 @@ define([
     'jquery',
     'underscore',
     'parse',
-], function($, _, Parse) {
+    'views/SearchForProductView',
+    'text!templates/logInTemplate.html'
+], function($, _, Parse, SearchForProductView, logInTemplate) {
     var LogInView = Parse.View.extend({
         events: {
             "submit form.login-form": "logIn",
@@ -66,7 +68,9 @@ define([
         },
 
         render: function() {
-            this.$el.html(_.template($("#login-template").html()));
+            //this.$el.html(_.template($("#login-template").html()));
+            //this.$el.html(_.template(logInTemplate).html());
+            this.$el.html(logInTemplate);
             this.delegateEvents();
         }
     });
