@@ -1,5 +1,6 @@
 // Author: Chris Arriola <arriolac279@gmail.com>
 // Filename: main.js
+// Description: Sets up application.
 
 require.config({
     paths: {
@@ -19,14 +20,7 @@ require.config({
 
 require([
     // Load application module and pass it to definition function
-    'jquery',
-    'underscore',
-    'parse',
     'application',
-], function($, _, Parse, Application) {
-    console.log($);
-    console.log(_);
-    console.log(Parse);
-    console.log(Application.random);
-    //Application.initialize();
+], function(Application) {
+    Application.initialize();
 });

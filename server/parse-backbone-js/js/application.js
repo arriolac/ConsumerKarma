@@ -4,29 +4,23 @@
 define([
    'jquery',
    'underscore',
-   'parse'
-], function($, _, Parse) {
+   'parse',
+   'router'
+], function($, _, Parse, AppRouter) {
     var initialize = function() {
-        console.log("Initializing Parse App.");
-        console.log("typeof $ is: " + typeof $);
-        console.log("typeof _ is: " + typeof _);
-        console.log("typeof Parse is: " + typeof Parse);
         Parse.$ = jQuery;
         Parse.initialize("xXnJr64tDsIdqugTpfJxg9nKaUE6oEH6tg3M7j74",
             "0AdYLo6RCJ6PpPkxoMWV37w4L3HCV7GBj9Ay4IEZ");
+        AppRouter.initialize();
     };
 
     return {
         initialize: initialize,
-        random: "random"
     };
 });
 
 
 //$(function() {
-//
-//    //Parse.$ = jQuery;
-//
 //    Parse.initialize("xXnJr64tDsIdqugTpfJxg9nKaUE6oEH6tg3M7j74",
 //        "0AdYLo6RCJ6PpPkxoMWV37w4L3HCV7GBj9Ay4IEZ");
 //
@@ -185,52 +179,5 @@ define([
 //            // });
 //        },
 //    });
-//
-//
-//
-//    // The main view for the app
-//    var AppView = Parse.View.extend({
-//        // Instead of generating a new element, bind to the existing skeleton of
-//        // the App already present in the HTML.
-//        el: $("#consumer-karma-app"),
-//
-//        initialize: function() {
-//            this.render();
-//        },
-//
-//        render: function() {
-//            if (Parse.User.current()) {
-//                new SearchForProductView();
-//            } else {
-//                new LogInView();
-//            }
-//        }
-//    });
-//
-//    var AppRouter = Parse.Router.extend({
-//        routes: {
-//            "" : "main",                    // index
-//        "search/:query": "search",             // search
-//        "add-new-item": "addNewItem"    // #add-new-item
-//        },
-//
-//        main: function() {
-//            new SearchForProductView();
-//        },
-//
-//        search: function(query) {
-//            // TODO: do parse query
-//            alert("Query is: " + query);
-//        },
-//
-//        addNewItem: function() {
-//            new AddNewItemView();
-//        }
-//    });
-//
-//    var app = new AppView;
-//    var router = new AppRouter;
-//
-//    Parse.history.start();
 //});
 
