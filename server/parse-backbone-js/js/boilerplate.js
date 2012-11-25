@@ -2,9 +2,9 @@
 // Filename: boilerplate.js
 
 define([
-  'jQuery',
-  'Underscore',
-  'Parse'
+  'jquery',
+  'underscore',
+  'parse'
 ], function($, _, Parse){
 
   return {};
