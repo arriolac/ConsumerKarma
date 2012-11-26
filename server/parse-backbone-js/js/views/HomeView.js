@@ -21,11 +21,11 @@ define([
         },
 
         render: function() {
-            if (Parse.User.current()) {
+//            if (Parse.User.current()) {
                 new SearchForProductView();
-            } else {
-                new LogInView();
-            }
+//            } else {
+//                new LogInView();
+//            }
         }
     });
     return HomeView;

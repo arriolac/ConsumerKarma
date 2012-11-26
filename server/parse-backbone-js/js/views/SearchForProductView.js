@@ -6,8 +6,8 @@ define([
     'jquery',
     'underscore',
     'parse',
-    //'views/LogInView'
-], function($, _, Parse) {//, LogInView) {
+    'text!templates/searchForProductTemplate.html'
+], function($, _, Parse, searchForProductTemplate) {
 
     var SearchForProductView = Parse.View.extend({
 
@@ -25,8 +25,7 @@ define([
             _.bindAll(this, 'render', 'logOut', 'searchItem');
 
             // Set up views
-            this.$el.html(_.template($("#search-product-template").html()));
-
+            this.$el.html(searchForProductTemplate);
             this.input = this.$("#search-product");
         },
 

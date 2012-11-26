@@ -12,10 +12,10 @@ define([
         routes: {
             "search/:query": "search",      // search
             "add-new-item": "addNewItem",   // #add-new-item
-            "" : "main",                    // index
+            "" : "home",                    // index
         },
 
-        main: function() {
+        home: function() {
             new HomeView();
         },
 

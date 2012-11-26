@@ -68,8 +68,6 @@ define([
         },
 
         render: function() {
-            //this.$el.html(_.template($("#login-template").html()));
-            //this.$el.html(_.template(logInTemplate).html());
             this.$el.html(logInTemplate);
             this.delegateEvents();
         }
