@@ -17,15 +17,16 @@ define([
         el: $("#consumer-karma-app"),
 
         initialize: function() {
+
+            // Highlight page selection
+            $('.navbar li').removeClass('active');
+            $('.navbar li a[href="#"]').parent().addClass('active');
+
             this.render();
         },
 
         render: function() {
-//            if (Parse.User.current()) {
-                new SearchForProductView();
-//            } else {
-//                new LogInView();
-//            }
+            new SearchForProductView();
         }
     });
     return HomeView;

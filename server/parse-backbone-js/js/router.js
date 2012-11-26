@@ -7,7 +7,8 @@ define([
     'underscore',
     'parse',
     'views/HomeView',
-], function($, _, Parse, HomeView) {
+    'views/AddNewItemView'
+], function($, _, Parse, HomeView, AddNewItemView) {
     var AppRouter = Parse.Router.extend({
         routes: {
             "search/:query": "search",      // search

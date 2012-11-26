@@ -18,27 +18,3 @@ define([
         initialize: initialize,
     };
 });
-
-
-//    // Add New Item View
-//    var AddNewItemView = Parse.View.extend({
-//
-//        events: {
-//        },
-//
-//        el: ".content",
-//
-//        initialize: function() {
-//            _.bindAll(this, 'render', 'addItem');
-//
-//            this.render();
-//        },
-//
-//        render: function() {
-//            this.$el.html(_.template($("#add-new-item-template").html()));
-//        },
-//
-//        addItem: function() {
-//            // TODO
-//        }
-//    });
